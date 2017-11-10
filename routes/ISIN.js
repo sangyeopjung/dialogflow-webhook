@@ -1,6 +1,5 @@
 var express = require('express');
 var request = require('request');
-var config = require('../config');
 var router = express.Router();
 
 function getISIN(ISIN) {
