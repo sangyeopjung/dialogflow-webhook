@@ -7,7 +7,7 @@ function getISIN(ISIN) {
     return "whatever";
 }
 
-router.post('/ISIN', function(req, res, next) {
+router.post('/', function(req, res, next) {
     console.log(req);
     var ISIN = req.body.result.parameters["ISIN"];
 
