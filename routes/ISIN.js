@@ -4,7 +4,7 @@ var router = express.Router();
 
 function getISIN(ISIN) {
     // TODO Read from excel
-    return "whatever";
+    return "Details of ISIN " + ISIN + ": whatever";
 }
 
 router.post('/', function(req, res, next) {
