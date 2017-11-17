@@ -4,17 +4,6 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const csv = require('csvtojson');
-
-const csvFilePath = './data/dummyBondDataCsv.csv';
-ISINList = [];
-csv()
-    .fromFile(csvFilePath)
-    .on('json', function(jsonObj) {
-        ISINList.push(jsonObj);
-    }).on('done', function(error) {
-    console.log('end');
-});
 
 const index = require('./routes/index');
 const entitySearch = require('./routes/entitySearch');

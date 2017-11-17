@@ -1,5 +1,17 @@
 const express = require('express');
+const csv = require('csvtojson');
 const router = express.Router();
+
+const csvFilePath = './data/dummyBondDataCsv.csv';
+let ISINList = [];
+
+csv()
+    .fromFile(csvFilePath)
+    .on('json', function(jsonObj) {
+        ISINList.push(jsonObj);
+    }).on('done', function(error) {
+    console.log('Finished reading CSV data.');
+});
 
 function getISIN(ISIN) {
     for (let i = 0; i < ISINList.length; i++) {
