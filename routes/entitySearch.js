@@ -1,14 +1,14 @@
-var express = require('express');
-var request = require('request');
-var config = require('../config');
-var router = express.Router();
+const express = require('express');
+const request = require('request');
+const config = require('../config');
+const router = express.Router();
 
 router
     .get('/:id', function(req, res, next) {
         if (req.params.id === undefined)
             res.status(400).send("No ID provided");
 
-        var options = {
+        const options = {
             rejectUnauthorized: false,
             url: "https://permid.org/" + req.params.id + "?format=json-ld&access-token=" + config.accessToken,
             method: 'GET',
@@ -26,7 +26,7 @@ router
                 res.status(500).send(error);
             }
 
-            var parsed = JSON.parse(body);
+            const parsed = JSON.parse(body);
             console.log("Response body:\n", parsed);
             res.status(200).send(parsed);
         });
@@ -36,7 +36,7 @@ router
         if (req.params.query === undefined)
             res.status(400).send("No query provided");
 
-        var options = {
+        const options = {
             rejectUnauthorized: false,
             url: "https://api.thomsonreuters.com/permid/search?access-token=" + config.accessToken + "&q=" + req.params.query,
             method: 'GET',
@@ -54,7 +54,7 @@ router
                 res.status(500).send(error);
             }
 
-            var parsed = JSON.parse(body);
+            const parsed = JSON.parse(body);
             console.log("Response body:\n", parsed);
             res.status(200).send(parsed);
         });
