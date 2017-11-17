@@ -4,7 +4,7 @@ const config = require('../config');
 const router = express.Router();
 
 router
-    .get('/:id', function(req, res, next) {
+    .get('/:id', (req, res, next) => {
         if (req.params.id === undefined)
             res.status(400).send("No ID provided");
 
@@ -20,7 +20,7 @@ router
 
         console.log("Sending " + options.method +" request to: " + options.url);
 
-        request(options, function (error, response, body) {
+        request(options, (error, response, body) => {
             if (error) {
                 console.log(error);
                 res.status(500).send(error);
@@ -32,7 +32,7 @@ router
         });
     })
 
-    .get('/permid/:query', function(req, res, next) {
+    .get('/permid/:query', (req, res, next) => {
         if (req.params.query === undefined)
             res.status(400).send("No query provided");
 
@@ -48,7 +48,7 @@ router
 
         console.log("Sending " + options.method +" request to: " + options.url);
 
-        request(options, function (error, response, body) {
+        request(options, (error, response, body) => {
             if (error) {
                 console.log(error);
                 res.status(500).send(error);
