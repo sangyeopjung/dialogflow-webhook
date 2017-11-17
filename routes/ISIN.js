@@ -29,13 +29,15 @@ router.post('/', (req, res, next) => {
 
     const jsonObj = getISIN(ISIN);
 
-    let output;
+    let outObj;
     if (jsonObj === null) {
-        output = "No data on ISIN " + ISIN + " found.";
+        outObj = "No data on ISIN " + ISIN + " found.";
     } else {
-        output = jsonObj;
+        outObj = jsonObj;
     }
 
+    let output = outObj.toString();
+    //TODO Make message clean
     res.status(200).send(JSON.stringify({'speech': output, 'displayText': output}));
 });
 
