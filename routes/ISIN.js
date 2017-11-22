@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
     }
 
     //TODO Make message clean
-    res.status(200).send(JSON.stringify({'speech': output, 'displayText': output}));
+    res.status(200).send({'speech': output, 'displayText': output});
 });
 
 module.exports = router;
